@@ -8,13 +8,17 @@ public class CarTest {
 
   @Test
   public void testBuild() {
-    Car car = new Car.Builder("Red")
+
+    int wheels = 4;
+    String color = "Red";
+
+    Car car = new Car.Builder(color)
         .size(Size.SMALL)
-        .wheels(4)
+        .wheels(wheels)
         .build();
 
-    Assert.assertEquals("Red", car.getColor());
+    Assert.assertEquals(color, car.getColor());
     Assert.assertEquals(Size.SMALL, car.getSize());
-    Assert.assertEquals(4, car.getWheels());
+    Assert.assertEquals(wheels, car.getWheels());
   }
 }
