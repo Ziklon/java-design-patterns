@@ -10,5 +10,4 @@ public class Employee {
   private String name;
   private Position position;
   
-  
 }

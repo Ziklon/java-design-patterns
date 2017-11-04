@@ -1,0 +1,32 @@
+package org.patterns.structural.compose;
+
+public class HtmlElement extends HtmlTag {
+
+
+  private String tagBody;
+
+  public HtmlElement(String tagName) {
+    this.tagName = tagName;
+    this.tagBody = "";
+    this.startTag = "";
+    this.endTag = "";
+  }
+
+
+
+  @Override
+  public void setTagBody(String tagBody) {
+    this.tagBody = tagBody;
+  }
+
+  @Override
+  public void generateHtml() {
+    String spaces = new String();
+    for (int i = 0; i < this.indent; ++i)
+      spaces += " ";
+
+    System.out.println(spaces + startTag + "" + tagBody + "" + endTag);
+  }
+
+
+}
