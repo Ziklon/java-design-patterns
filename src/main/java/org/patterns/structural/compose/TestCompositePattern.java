@@ -1,6 +1,11 @@
 package org.patterns.structural.compose;
 
 public class TestCompositePattern {
+  
+  /**
+   * Composition Program Client.
+   * @param args - initial arguments
+   */
   public static void main(String[] args) {
 
     HtmlTag parentTag = new HtmlParentElement("<html>");

@@ -6,7 +6,11 @@ import java.util.List;
 public class HtmlParentElement extends HtmlTag {
 
   private List<HtmlTag> childrenTag;
-
+  
+  /**
+   * Created a HTMLParentElement.
+   * @param tagName <tagName/>
+   */
   public HtmlParentElement(String tagName) {
     this.tagName = tagName;
     this.startTag = "";
@@ -34,8 +38,9 @@ public class HtmlParentElement extends HtmlTag {
   public void generateHtml() {
 
     String spaces = new String();
-    for (int i = 0; i < this.indent; ++i)
+    for (int i = 0; i < this.indent; ++i) {
       spaces += " ";
+    }
     System.out.println(spaces + startTag);
     this.indent++;
     for (HtmlTag tag : childrenTag) {
