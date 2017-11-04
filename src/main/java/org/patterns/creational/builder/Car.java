@@ -23,7 +23,7 @@ public class Car {
     
     /**
      * Builder Constructor.
-     * @param color car
+     * @param color required argument
      */
     public Builder(String color) {
 
