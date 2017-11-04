@@ -20,7 +20,11 @@ public class Car {
     private int wheels;
     private String color;
     private Size size;
-
+    
+    /**
+     * Builder Constructor.
+     * @param color car
+     */
     public Builder(String color) {
 
       if (color == null) {
