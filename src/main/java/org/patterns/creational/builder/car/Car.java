@@ -4,11 +4,6 @@ import java.util.Objects;
 
 import lombok.Value;
 
-
-interface ColorSelectionStage {
-  Car.Builder color(String color);
-}
-
 @Value
 public class Car {
 
@@ -26,7 +21,7 @@ public class Car {
     return new Builder();
   }
 
-  static class Builder implements ColorSelectionStage {
+  public static class Builder implements ColorSelectionStage {
 
     private int wheels;
     private String color;
@@ -59,5 +54,9 @@ public class Car {
       this.color = color;
       return this;
     }
+  }
+
+  public interface ColorSelectionStage {
+    Car.Builder color(String color);
   }
 }
