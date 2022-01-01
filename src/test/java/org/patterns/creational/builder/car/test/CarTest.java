@@ -20,14 +20,13 @@ public class CarTest {
     Assert.assertEquals(Size.SMALL, car.getSize());
     Assert.assertEquals(wheels, car.getWheels());
   }
-
-
+  
   @Test
-  public void testCardWithMandatoryField(){
+  public void testCardWithMandatoryField() {
     Car car = Car.builder()
             .color("Blue")
             .build();
-    
+
     Assert.assertNotNull(car);
     Assert.assertNull(car.getSize());
     Assert.assertEquals(0, car.getWheels());
