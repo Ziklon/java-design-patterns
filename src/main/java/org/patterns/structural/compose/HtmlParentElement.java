@@ -5,10 +5,11 @@ import java.util.List;
 
 public class HtmlParentElement extends HtmlTag {
 
-  private List<HtmlTag> childrenTag;
-  
+  private final List<HtmlTag> childrenTag;
+
   /**
    * Created a HTMLParentElement.
+   *
    * @param tagName <tagName/>
    */
   public HtmlParentElement(String tagName) {
@@ -37,7 +38,7 @@ public class HtmlParentElement extends HtmlTag {
   @Override
   public void generateHtml() {
 
-    String spaces = new String();
+    String spaces = "";
     for (int i = 0; i < this.indent; ++i) {
       spaces += " ";
     }

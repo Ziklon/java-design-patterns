@@ -7,7 +7,7 @@ public class HtmlElement extends HtmlTag {
 
   /**
    * creates a HTMLElement.
-   * 
+   *
    * @param tagName <tagName/>
    */
   public HtmlElement(String tagName) {
@@ -18,7 +18,6 @@ public class HtmlElement extends HtmlTag {
   }
 
 
-
   @Override
   public void setTagBody(String tagBody) {
     this.tagBody = tagBody;
@@ -26,7 +25,7 @@ public class HtmlElement extends HtmlTag {
 
   @Override
   public void generateHtml() {
-    String spaces = new String();
+    String spaces = "";
     for (int i = 0; i < this.indent; ++i) {
       spaces += " ";
     }

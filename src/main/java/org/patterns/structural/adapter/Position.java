@@ -3,14 +3,15 @@ package org.patterns.structural.adapter;
 public enum Position {
   TEAM_LEADER("Team Leader"), DEVELOPER("Developer"), TESTER("Tester");
 
-  private String desc;
+  private final String desc;
 
-  private Position(String desc) {
+  Position(String desc) {
     this.desc = desc;
   }
-  
+
   /**
    * fromDesc return a Position Object from a description String.
+   *
    * @param desc of the position
    * @return Position from a valid description
    */

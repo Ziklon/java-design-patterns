@@ -1,22 +1,19 @@
-package org.patterns.creational.builder;
+package org.patterns.creational.builder.car;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 public class CarTest {
 
-
   @Test
   public void testBuild() {
-
     int wheels = 4;
     String color = "Red";
-
-    Car car = new Car.Builder(color)
-        .size(Size.SMALL)
-        .wheels(wheels)
-        .build();
-
+    Car car = Car.builder()
+            .color(color)
+            .wheels(wheels)
+            .size(Size.SMALL)
+            .build();
     Assert.assertEquals(color, car.getColor());
     Assert.assertEquals(Size.SMALL, car.getSize());
     Assert.assertEquals(wheels, car.getWheels());

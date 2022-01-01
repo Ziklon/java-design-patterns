@@ -5,41 +5,50 @@ apply plugin: 'java'
 
 apply plugin: 'checkstyle'
 
-
+apply plugin: "io.freefair.lombok"
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-checkstyle {
-
-  project.ext.checkstyleVersion = '8.4'
-  project.ext.sevntuChecksVersion = '1.24.2'
-
-  repositories {
-    mavenCentral()
-    // we keep artifacts in maven central too, but this is just example of usage from our old maven repo on github
-    maven {
-      url "http://sevntu-checkstyle.github.com/sevntu.checkstyle/maven2"
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
-  }
-
-  ignoreFailures = true
-  configFile = file("${project.rootDir}/checkstyle.xml")
-
-  checkstyleMain {
-    source = sourceSets.main.allSource
-  }
-  configurations {
-    checkstyle
-  }
-  dependencies{
-    assert project.hasProperty("checkstyleVersion")
-    checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
-    checkstyle "com.github.sevntu-checkstyle:sevntu-checks:${sevntuChecksVersion}"
-  }
+    dependencies {
+        classpath "io.freefair.gradle:lombok-plugin:6.3.0"
+    }
 }
 
+checkstyle {
 
+    project.ext.checkstyleVersion = '8.4'
+    project.ext.sevntuChecksVersion = '1.24.2'
+
+    repositories {
+        // we keep artifacts in maven central too, but this is just example of usage from our old maven repo on github
+        maven {
+            url "https://maven.google.com"
+        }
+        jcenter()
+    }
+
+    ignoreFailures = true
+    configFile = file("${project.rootDir}/checkstyle.xml")
+
+    checkstyleMain {
+        source = sourceSets.main.allSource
+    }
+    configurations {
+        checkstyle
+    }
+    dependencies {
+        assert project.hasProperty("checkstyleVersion")
+        checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
+        checkstyle "com.github.sevntu-checkstyle:sevntu-checks:${sevntuChecksVersion}"
+    }
+}
 
 repositories {
     mavenCentral()
@@ -47,8 +56,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly "org.projectlombok:lombok:1.16.16"
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compileOnly "org.projectlombok:lombok:1.18.22"
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.assertj:assertj-core:3.11.0'
 }
 
 test {

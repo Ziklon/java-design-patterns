@@ -1,8 +1,15 @@
-package org.patterns.creational.builder;
+package org.patterns.creational.builder.car;
 
-import lombok.Data;
+import java.util.Objects;
 
-@Data
+import lombok.Value;
+
+
+interface ColorSelectionStage {
+  Car.Builder color(String color);
+}
+
+@Value
 public class Car {
 
   private int wheels;
@@ -15,22 +22,21 @@ public class Car {
     this.wheels = builder.wheels;
   }
 
-  public static class Builder {
+  public static ColorSelectionStage builder() {
+    return new Builder();
+  }
+
+  static class Builder implements ColorSelectionStage {
 
     private int wheels;
     private String color;
     private Size size;
-    
+
     /**
      * Builder Constructor.
-     * @param color required argument
      */
-    public Builder(String color) {
+    private Builder() {
 
-      if (color == null) {
-        throw new IllegalArgumentException("color can't be null");
-      }
-      this.color = color;
     }
 
     public Builder wheels(int wheels) {
@@ -47,6 +53,11 @@ public class Car {
       return new Car(this);
     }
 
+    @Override
+    public Builder color(String color) {
+      Objects.requireNonNull(color, "color can't be null");
+      this.color = color;
+      return this;
+    }
   }
-
 }

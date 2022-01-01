@@ -5,7 +5,7 @@ import java.util.List;
 
 public class EmployeeAdapter implements PaymentSalary {
 
-  private ThirdPartyBillingSystem thirdPartyBillingSystem;
+  private final ThirdPartyBillingSystem thirdPartyBillingSystem;
 
   public EmployeeAdapter() {
     this.thirdPartyBillingSystem = new ThirdPartyBillingSystem();
@@ -16,7 +16,6 @@ public class EmployeeAdapter implements PaymentSalary {
   public void processCompanySalary(String[][] employeeInfo) {
 
 
-
     List<Employee> employeeList = new ArrayList<Employee>();
 
     for (String[] row : employeeInfo) {
@@ -25,8 +24,10 @@ public class EmployeeAdapter implements PaymentSalary {
     }
 
     System.out.println(
-        "Adapter converted Array of Employee to ArrayList of Employee : \n" + employeeList + "\n"
-            + "then delegate to the ThirdPartyBillingSystem for processing the employee salary");
+            "Adapter converted Array of Employee to ArrayList of Employee : \n"
+                    + employeeList + "\n"
+                    + "then delegate to the ThirdPartyBillingSystem for processing "
+                    + "the employee salary");
     thirdPartyBillingSystem.processSalary(employeeList);
 
   }
